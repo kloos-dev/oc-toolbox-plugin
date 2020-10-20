@@ -4,6 +4,7 @@ use Event;
 use Backend;
 use System\Classes\PluginBase;
 use Kloos\Toolbox\Classes\Event\ExtendThemeData;
+use Kloos\Toolbox\FormWidgets\PropertyInspector;
 
 /**
  * Toolbox Plugin Information File
@@ -92,6 +93,13 @@ class Plugin extends PluginBase
                 'permissions' => ['kloos.toolbox.*'],
                 'order'       => 500,
             ],
+        ];
+    }
+
+    public function registerFormWidgets()
+    {
+        return [
+            PropertyInspector::class => 'propertyinspector',
         ];
     }
 }

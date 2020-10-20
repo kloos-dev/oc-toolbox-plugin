@@ -1,0 +1,40 @@
+/*
+ * This is a sample StyleSheet file used by PropertyInspector
+ *
+ * You can delete this file if you want
+ */
+[data-control="propertyInspector"] {
+    padding: 10px;
+}
+
+[data-control="propertyInspector"] i {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.field-repeater-form .form-group [data-control="propertyInspector"] {
+    position: absolute;
+    top: -9px;
+    right: 38px;
+    z-index: 90;
+    line-height: 20px;
+    padding: 0px;
+
+    width: 20px;
+    height: 20px;
+    text-align: center;
+
+    transition: transform 0.3s;
+    display: block;
+    font-size: 12px;
+}
+
+.field-repeater-form .form-group [data-control="propertyInspector"] i {
+    font-size: 12px;
+    color: #bdc3c7 !important;
+}
+
+.field-repeater-form .form-group [data-control="propertyInspector"] i:hover {
+    color: #999 !important;
+    text-decoration: none;
+}

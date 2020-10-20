@@ -1,0 +1,16 @@
+<div
+    class="<?= $span == 'right' ? 'pull-right' : '' ?>"
+    data-control="propertyInspector"
+    data-inspectable
+    data-inspector-title="Properties"
+    data-inspector-description="Customize properties"
+    data-inspector-config='<?= $properties ?>'>
+
+    <i class="icon-cog text-primary"></i>
+
+    <input
+        data-inspector-values
+        type="hidden"
+        name="<?= $name ?>"
+        value='<?= $value ?>' />
+</div>
