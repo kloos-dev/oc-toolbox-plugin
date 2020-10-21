@@ -43,6 +43,12 @@ class Plugin extends PluginBase
     public function boot()
     {
         Event::subscribe(ExtendThemeData::class);
+
+        Event::listen('backend.page.beforeDisplay', function ($controller) {
+            $controller->addJs('/plugins/kloos/toolbox/assets/js/jjsonviewer.js');
+            $controller->addJs('/plugins/kloos/toolbox/assets/js/oc.json-format.js');
+            $controller->addCss('/plugins/kloos/toolbox/assets/css/jjsonviewer.css');
+        });
     }
 
     /**
