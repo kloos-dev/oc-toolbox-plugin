@@ -20,9 +20,9 @@ class Plugin extends PluginBase
     {
         return [
             'name'        => 'Toolbox',
-            'description' => 'No description provided yet...',
+            'description' => 'This toolbox contains all sort of shared functions used by all our products.',
             'author'      => 'Kloos',
-            'icon'        => 'icon-leaf'
+            'icon'        => 'icon-rocket'
         ];
     }
 
