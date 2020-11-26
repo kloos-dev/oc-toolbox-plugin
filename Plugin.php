@@ -3,8 +3,10 @@
 use Event;
 use Backend;
 use System\Classes\PluginBase;
+use Kloos\Toolbox\Classes\Extend\ActionManager;
 use Kloos\Toolbox\Classes\Event\ExtendThemeData;
 use Kloos\Toolbox\FormWidgets\PropertyInspector;
+use Kloos\Toolbox\Classes\Extend\ActionPathHelper;
 
 /**
  * Toolbox Plugin Information File
@@ -33,6 +35,10 @@ class Plugin extends PluginBase
      */
     public function register()
     {
+        //
+        $this->app->singleton(ActionManager::class);
+
+        ActionPathHelper::instance()->register();
     }
 
     /**
