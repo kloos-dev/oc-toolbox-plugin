@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Tag
+
+# Model Form Field configuration
+form: $/kloos/toolbox/models/tag/fields.yaml
+
+# Model Class name
+modelClass: Kloos\Toolbox\Models\Tag
+
+# Default redirect location
+defaultRedirect: kloos/toolbox/tags
+
+# Create page
+create:
+    title: Create Tag
+    redirect: kloos/toolbox/tags/update/:id
+    redirectClose: kloos/toolbox/tags
+
+# Update page
+update:
+    title: Edit Tag
+    redirect: kloos/toolbox/tags
+    redirectClose: kloos/toolbox/tags
+
+# Preview page
+preview:
+    title: Preview Tag

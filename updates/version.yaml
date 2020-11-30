@@ -1,2 +1,6 @@
 1.0.1: First version of Toolbox
 1.0.2: Added Lorisleiva\Actions package
+1.0.3:
+  - Added tag model
+  - create_tags_table.php
+  - create_tags_taggables_table.php

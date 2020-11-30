@@ -78,12 +78,10 @@ class Plugin extends PluginBase
      */
     public function registerPermissions()
     {
-        return []; // Remove this line to activate
-
         return [
-            'kloos.toolbox.some_permission' => [
+            'kloos.toolbox.manage_tags' => [
                 'tab' => 'Toolbox',
-                'label' => 'Some permission'
+                'label' => 'Manage tags'
             ],
         ];
     }
@@ -105,6 +103,22 @@ class Plugin extends PluginBase
                 'permissions' => ['kloos.toolbox.*'],
                 'order'       => 500,
             ],
+        ];
+    }
+
+    public function registerSettings()
+    {
+        return [
+            'tags' => [
+                'label'       => 'Tags',
+                'description' => 'Manage tags',
+                'category'    => 'Toolbox',
+                'icon'        => 'icon-tag',
+                'url'         => Backend::url('kloos/toolbox/tags'),
+                'order'       => 500,
+                'keywords'    => 'tags toolbox',
+                'permissions' => ['kloos.toolbox.manage_tags'],
+            ]
         ];
     }
 
