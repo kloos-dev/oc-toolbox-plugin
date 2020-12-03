@@ -38,7 +38,8 @@ class Plugin extends PluginBase
         //
         $this->app->singleton(ActionManager::class);
 
-        ActionPathHelper::instance()->register();
+        ActionPathHelper::instance()
+            ->register();
     }
 
     /**

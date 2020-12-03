@@ -4,3 +4,6 @@
   - Added tag model
   - create_tags_table.php
   - create_tags_taggables_table.php
+1.0.4:
+  - Add the code column to tags
+  - update_tags_table.php

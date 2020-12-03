@@ -56,4 +56,17 @@ class Tag extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function beforeSave()
+    {
+        if (!$this->code) {
+            $this->code = str_slug($this->name);
+        }
+    }
+
+    protected static function byCode($code)
+    {
+        return static::where('code', $code)
+            ->first();
+    }
 }
