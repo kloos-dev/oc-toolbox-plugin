@@ -1,0 +1,23 @@
+<form data-request="{{ __SELF__ }}::onSave">
+    <div class="row">
+        {% for field,config in form.fields %}
+            {% if config.newLine %}
+                <div class="col-12"></div>
+            {% endif %}
+
+            <div class="col-md-12 col-lg-6">
+                <div class="form-group {{ config.cssClass }}">
+                    <label>{{ config.label }}</label>
+                    {% partial '@form/'~config.type name=field field=config value=data[field] %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="buttons pt-5">
+
+        <input type="submit" class="btn btn-primary mr-3" value="Opslaan" />
+        of
+        <a href="javascript:;" onclick="window.history.back()" class="text-gray-700"><u>Annuleren</u></a>
+    </div>
+</form>

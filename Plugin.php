@@ -65,10 +65,8 @@ class Plugin extends PluginBase
      */
     public function registerComponents()
     {
-        return []; // Remove this line to activate
-
         return [
-            'Kloos\Toolbox\Components\MyComponent' => 'myComponent',
+            'Kloos\Toolbox\Components\FrontendForm' => 'frontendForm',
         ];
     }
 
