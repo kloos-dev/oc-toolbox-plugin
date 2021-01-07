@@ -1,0 +1,36 @@
+[data-panel-type] {
+    display: none;
+    min-width: 250px;
+    height: 100%;
+    top: 0px;
+    background-color: #EDEDED;
+    box-sizing: border-box;
+    max-height: 100%;
+    overflow-y: scroll;
+}
+
+[data-panel-type] .panel-content {
+    padding: 10px;
+}
+
+[data-panel-type="ajax"] {}
+
+[data-panel-type="ajax"] .loading-indicator {
+    width: 100%;
+    text-align: center;
+    margin-top: 100px;
+}
+
+[data-panel-type="ajax"] .loading-indicator i {
+    font-size: 32px;
+}
+
+[data-panel-type="ajax"] .panel-content {
+    display: none;
+}
+
+[data-panel-position="right"] {
+    float: right;
+    position: absolute;
+    right: 0px;
+}

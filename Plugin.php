@@ -67,6 +67,7 @@ class Plugin extends PluginBase
     {
         return [
             'Kloos\Toolbox\Components\FrontendForm' => 'frontendForm',
+            'Kloos\Toolbox\Components\AjaxPanel' => 'ajaxPanel',
         ];
     }
 
