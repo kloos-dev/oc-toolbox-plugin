@@ -34,7 +34,8 @@
         let self = this;
 
         $(document).on('click', function (e) {
-            if ($(e.target).hasClass('panel-trigger')) {
+            if ($(e.target).hasClass('panel-trigger') || $(e.target).parents('.panel-trigger').hasClass('panel-trigger')) {
+                self.clear();
                 return;
             }
 
@@ -63,9 +64,17 @@
     }
 
     AjaxPanelControl.prototype.close = function () {
+        this.clear();
+        this.$el.hide();
+    }
+
+    AjaxPanelControl.prototype.clear = function () {
+        this.$el.css({
+            minWidth: this.$el.width(),
+        });
+
         this.$el.find('.panel-content').html('').hide();
         this.$el.find('.loading-indicator').show();
-        this.$el.hide();
     }
 
     AjaxPanelControl.prototype.setupLoadingIndicator = function () {
