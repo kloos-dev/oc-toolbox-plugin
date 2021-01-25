@@ -33,10 +33,18 @@ class OctoberExtend
         return null;
     }
 
+    public function extendSubscribe()
+    {
+    }
+
     public function subscribe()
     {
         $this->extendFormFields();
         $this->extendRelationConfig();
+
+        $this->extendRelations();
+
+        $this->extendSubscribe();
     }
 
     public function addFields()
@@ -50,6 +58,21 @@ class OctoberExtend
     }
 
     public function addRelationConfig()
+    {
+        return [];
+    }
+
+    public function belongsToMany()
+    {
+        return [];
+    }
+
+    public function hasMany()
+    {
+        return [];
+    }
+
+    public function belongsTo()
     {
         return [];
     }
@@ -71,7 +94,7 @@ class OctoberExtend
         $configEmpty = true;
         $relationConfig = $this->addRelationConfig();
 
-        if (!array_key_exists('Backend\Behaviors\RelationController', $controller->implement)) {
+        if (!in_array('Backend\Behaviors\RelationController', $controller->implement) && !in_array('Backend.Behaviors.RelationController', $controller->implement)) {
             $addRelationController = true;
         }
 
@@ -83,7 +106,7 @@ class OctoberExtend
             $configEmpty = false;
         }
 
-        $controller::extend(function ($c) use ($addRelationController, $configExists, $configEmpty, $relationConfig) {
+        $controller::extend(function ($c) use ($addRelationController, $configExists, $configEmpty, $relationConfig, $controller) {
             if ($addRelationController) {
                 array_push($c->implement, 'Backend\Behaviors\RelationController');
             }
@@ -101,7 +124,9 @@ class OctoberExtend
                     }
 
                     if (is_string($c->relationConfig)) {
-                        $currentRelationConfig = Yaml::parseFile($c->relationConfig);
+                        $controllerPath = plugins_path(strtolower(str_replace('\\', '/', get_class($controller)))) . '/' . $c->relationConfig;
+
+                        $currentRelationConfig = Yaml::parseFile($controllerPath);
 
                         $c->relationConfig = array_merge($currentRelationConfig, $relationConfig);
                     }
@@ -112,7 +137,7 @@ class OctoberExtend
 
     private function extendFormFields()
     {
-        Event::listen('backend.form.extendFields', function ($formWidget) {
+        Event::listen('backend.form.extendFields', function ($formWidget, $formData) {
             if (!$formWidget->getController() instanceof $this->controller) {
                 return;
             }
@@ -121,8 +146,26 @@ class OctoberExtend
                 return;
             }
 
+            if ($formWidget->isNested) {
+                return;
+            }
+
             $formWidget->addFields($this->addFields());
             $formWidget->addTabFields($this->addTabFields());
+        });
+    }
+
+    private function extendRelations()
+    {
+        $model = $this->model;
+        $belongsToMany = $this->belongsToMany();
+        $hasMany = $this->hasMany();
+        $belongsTo = $this->belongsTo();
+
+        $model::extend(function ($model) use ($belongsToMany, $hasMany, $belongsTo) {
+            $model->belongsToMany = array_merge($model->belongsToMany, $belongsToMany);
+            $model->hasMany = array_merge($model->hasMany, $hasMany);
+            $model->belongsTo = array_merge($model->belongsTo, $belongsTo);
         });
     }
 }

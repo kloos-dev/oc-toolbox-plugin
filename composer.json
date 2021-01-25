@@ -13,7 +13,8 @@
   "require": {
     "php": ">=7.0",
     "composer/installers": "~1.0",
-    "lorisleiva/laravel-actions": "v1.2.0"
+    "lorisleiva/laravel-actions": "v1.2.0",
+    "spatie/ray": "dev-master"
   },
   "minimum-stability": "dev"
 }
