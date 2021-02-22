@@ -55,6 +55,8 @@ class Plugin extends PluginBase
             $controller->addJs('/plugins/kloos/toolbox/assets/js/jjsonviewer.js');
             $controller->addJs('/plugins/kloos/toolbox/assets/js/oc.json-format.js');
             $controller->addCss('/plugins/kloos/toolbox/assets/css/jjsonviewer.css');
+
+            $controller->addCss('/plugins/kloos/toolbox/assets/css/backend.css');
         });
     }
 
