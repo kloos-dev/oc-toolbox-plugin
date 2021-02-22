@@ -1,3 +1,7 @@
-.clear {
+.form-new-row {
     clear: both;
+}
+
+.span-storm {
+    padding: 0px !important;
 }
